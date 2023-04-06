@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>챗봇</title>
+    <link href="style1.css" rel="stylesheet"></href>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="bot-message">안녕하십니까? 식습관, 운동습관, 자세 중 어느것을 물어보시겠습니까? 대화를 끝내고 싶다면 '종료'라고 쳐 주십시오.</div>
+    </div>
+    <input class="user-input" type="text" placeholder="메시지를 입력하세요." autofocus>
+    <script langauge="javascript">
+      // Select the chat container and user input box
+const chatContainer = document.querySelector('.chat-container');
+const userInput = document.querySelector('.user-input'); 
+
+// Add an event listener to the user input box for when the user hits "Enter"
+userInput.addEventListener('keydown', (event) => {
+  if (event.keyCode === 13) {
+    // Get the user's message and create a new message element
+    const userMessage = userInput.value;
+    const userMessageElement = document.createElement('div');
+    userMessageElement.classList.add('user-message');
+    userMessageElement.textContent = userMessage; 
+
+    // Append the user's message element to the chat container
+    chatContainer.appendChild(userMessageElement); 
+
+    // Clear the user input box
+    userInput.value = ''; 
+
+    if (userMessage.toLowerCase().includes('식습관'))  {
+    const botMessageElement = document.createElement('div');
+    botMessageElement.classList.add('bot-message');
+    botMessageElement.textContent = '식습관 설문지를 작성해주세요^^';
+    chatContainer.appendChild(botMessageElement);
+    window.open("chat식습관 설문.html","식습관 설문","width=700,height=700,top=100,left=100")
+    }  
+    if (userMessage.toLowerCase().includes('운동습관'))  {
+    const botMessageElement = document.createElement('div');
+    botMessageElement.classList.add('bot-message');
+    botMessageElement.textContent = '운동습관 설문지를 작성해주세요^^';
+    chatContainer.appendChild(botMessageElement);  
+    } 
+    if (userMessage.toLowerCase().includes('자세'))  {
+    const botMessageElement = document.createElement('div');
+    botMessageElement.classList.add('bot-message');
+    botMessageElement.textContent = '자세 설문지를 작성해주세요^^';
+    chatContainer.appendChild(botMessageElement);    
+    }
+    if (userMessage.toLowerCase().includes('종료'))  {
+    window.close();
+    }
+  }
+});
+    </script>
+  </body>
+</html>
